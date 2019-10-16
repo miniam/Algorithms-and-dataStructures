@@ -26,6 +26,8 @@ void MaxHeapify(int a[], int i, int n)
 	a[j/2] = temp;
 	return;
 }
+
+// function to implement the heapsort. 
 void HeapSort(int a[], int n)
 {
 	int i, temp;
@@ -39,6 +41,7 @@ void HeapSort(int a[], int n)
 		MaxHeapify(a, 1, i - 1);
 	}
 }
+
 void Build_MaxHeap(int a[], int n)
 {
 	int i;

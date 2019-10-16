@@ -1,3 +1,4 @@
+// implements the quick sort algorithm through code. 
 const quickSort = (oldArray) => {
     if (oldArray.length <= 1) {
         return oldArray;
@@ -19,8 +20,7 @@ const quickSort = (oldArray) => {
     }
 };
 
-
-
+// tests the quick sort algorithm. 
 let arr = [3, 44, 38, 5, 47, 15, 36, 26, 27, 2, 46, 4, 19, 50, 48]
 console.log('Unsorted: ', arr);
 console.log('Sorted: ',  quickSort(arr));

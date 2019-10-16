@@ -16,12 +16,15 @@ import java.util.ArrayList;
  */
 public class BucketSort {
 
+    // Variable Declaration; Made a default bucket size. 
     private static final int DEFAULT_BUCKET_SIZE = 5;
 
+    // function that calls the bucketSort function with the default bucket size. 
     public static void sort(int[] arr) {
         bucketSort(arr, DEFAULT_BUCKET_SIZE);
     }
 
+    // function to implement the bucketSort 
     public static void bucketSort(int arr[], int size) {
         if (arr.length == 0) return;
 
@@ -56,6 +59,7 @@ public class BucketSort {
         }
     }
 
+    // This is a main that test(s) the bucket sort. 
     public static void main(String[] args) {
         int[] arr1 = {10, 3, 7, 5, 1, 15, 20};
         BucketSort.sort(arr1);

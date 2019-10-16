@@ -1,19 +1,25 @@
 #include<iostream>
 #include<algorithm>
 using namespace std;
+
+// this displays the array before and after the sort. 
 void display(int *array, int size) {
    for(int i = 1; i<=size; i++)
       cout << array[i] << " ";
    cout << endl;
 }
+
+//this obtains the max element from the array. 
 int getMax(int array[], int size) {
    int max = array[1];
    for(int i = 2; i<=size; i++) {
       if(array[i] > max)
          max = array[i];
    }
-   return max; //the max element from the array
+   return max; 
 }
+
+// This implements the Counting Sort. 
 void countSort(int *array, int size) {
    int output[size+1];
    int max = getMax(array, size);
@@ -32,6 +38,8 @@ void countSort(int *array, int size) {
       array[i] = output[i]; //store output array to main array
    }
 }
+
+// These are test cases for the counting sort. 
 int main() {
    int n;
    cout << "Enter the number of elements: ";

@@ -1,0 +1,23 @@
+#include <stdio.h>
+long long int fasatexp(long long int n,long long int r)
+{
+    long long int ans=1;
+    while(r!=0)
+    {
+        int x = r&1;//gets the least significant bit of r
+        if(x==1)
+        ans = ans*n;
+        n = n*n;
+        r>>1;//divide r by two to get the second least significant digit
+     }
+     return ans;
+     
+ }
+int main(void)
+{
+  long long int n,r;
+  scanf("%lld %lld",&n,&r);
+  //to accept values from the user, where n is the base and r is the exponent
+  long long int ans = fastexp(n,r);
+  printf("%lld\n",ans);
+}

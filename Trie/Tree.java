@@ -45,9 +45,10 @@ public class Tree {
 
     public static void main(String[] args) {
         Tree root = new Tree(5);
-        root.add(10);
-        root.add(2);
-        root.add(7);
+
+        for(int i = 0 ; i < 15 ; i++){
+            root.add((int)(Math.random() * 100));
+        }
 
         root.printPrefixed();
         System.out.println("-----");

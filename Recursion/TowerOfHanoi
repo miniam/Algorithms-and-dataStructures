@@ -1,0 +1,19 @@
+namespace Recursion
+{
+    public static class TowerOfHanoi
+    {
+        public static void Instructions(int disks, string sourceRod, string destinationRod,string helpRod)
+        {
+            if (disks>0)
+            {
+                Instructions(disks - 1, sourceRod, helpRod, destinationRod);
+                Console.WriteLine("Move disk from rod {0} to rod {1}", sourceRod, destinationRod);
+                Instructions(disks - 1, helpRod, destinationRod, sourceRod);
+            }
+        }
+
+        public static void Main(string[] args)
+        {
+            Instructions(4, "a", "c", "b");
+        }
+    }

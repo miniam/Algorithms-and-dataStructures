@@ -1,61 +1,48 @@
+import java.lang.reflect.Array;
 import java.util.Arrays;
 
-public class MergeSort<T extends Comparable<T>> {
+public class MergeSort {
+    public static void main(String[] args) {
+        int[] nums = {5, 2, 1, 6, 9, 3};
 
-    public void sort(T[] array, int leftIndex, int rightIndex) {
-		int middleIndex;
+        System.out.println(Arrays.toString(sort(nums)));
 
-		if (validation(array, leftIndex, rightIndex)){
+    }
 
-			middleIndex = (leftIndex + rightIndex) / 2;
+    public static int[] sort(int[] nums) {
+        if (nums.length == 1) {
+            return nums;
+        }
+        int[] first = Arrays.copyOfRange(nums, 0, nums.length / 2);
+        int[] second = Arrays.copyOfRange(nums, nums.length / 2, nums.length);
+        first = sort(first);
+        second = sort(second);
+        return merge(first, second);
+    }
 
-			this.sort(array, leftIndex, middleIndex);
-			this.sort(array, middleIndex + 1, rightIndex);
-			this.merge(array, leftIndex, middleIndex, rightIndex);
-		}
-	}
+    private static int[] merge(int[] first, int[] second) {
+        int[] merged = new int[first.length + second.length];
+        int i = 0;
+        int j = 0;
+        int k = 0;
 
-	private boolean validation(T[] array, int leftIndex, int rightIndex) {
-		boolean isValid = true;
+        while (i < first.length && j < second.length) {
+            if (first[i] <= second[j]) {
+                merged[k] = first[i++];
+            } else {
+                merged[k] = second[j++];
+            }
+            k++;
 
-		if (array == null || array.length <= 0) {
-			isValid = false;
-		} else if ((leftIndex >= rightIndex) || (leftIndex < 0) || (rightIndex <= 0)) {
-			isValid = false;
-		} else if ((rightIndex > array.length - 1) || leftIndex >= array.length) {
-			isValid = false;
-		}
-
-		return isValid;
-	}
-
-	private void merge(T[] array, int leftIndex, int middleIndex, int rightIndex){
-		int leftStart = leftIndex;
-		int leftEnd = middleIndex;
-		int rightStart = middleIndex + 1;
-		int rightEnd = rightIndex;
-		int index = leftIndex;
-
-		T[] temp = Arrays.copyOf(array, array.length);
-
-		while (leftStart <= leftEnd && rightStart <= rightEnd){
-			if (temp[leftStart].compareTo(temp[rightStart]) < 0){
-				array[index] = temp[leftStart];
-				leftStart++;
-			} else {
-				array[index] = temp[rightStart];
-				rightStart++;
-			}
-
-			index++;
-		}
-
-		if (leftStart <= leftEnd){
-			System.arraycopy(temp, leftStart, array, index, leftEnd - leftStart + 1);
-		} else if (rightStart <= rightEnd) {
-			System.arraycopy(temp, rightStart, array, index, rightEnd - rightStart + 1);
-		}
-
-	}
-
+        }
+        while (i < first.length) {
+            merged[k] = first[i++];
+            k++;
+        }
+        while (j < second.length) {
+            merged[k] = second[j++];
+            k++;
+        }
+        return merged;
+    }
 }
